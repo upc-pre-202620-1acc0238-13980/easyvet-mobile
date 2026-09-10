@@ -1,10 +1,13 @@
 package pe.edu.upc.easyvet.features.catalog.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import pe.edu.upc.easyvet.features.catalog.application.GetProductsUseCase
 
 class HomeViewModel(private val getProducts: GetProductsUseCase = GetProductsUseCase()): ViewModel() {
@@ -14,28 +17,30 @@ class HomeViewModel(private val getProducts: GetProductsUseCase = GetProductsUse
 
     fun loadProducts() {
 
-
-        _uiState.update { currentState ->
-            currentState.copy(isLoading = true)
-        }
-
-        try {
-            val products = getProducts()
+        viewModelScope.launch {
             _uiState.update { currentState ->
-                currentState.copy(
-                    products = products,
-                    isLoading = false
-                )
+                currentState.copy(isLoading = true)
             }
 
-        } catch (e: Exception) {
-            _uiState.update { currentState ->
-                currentState.copy(
-                    isLoading = false,
-                    errorMessage = e.message ?: "An unexpected error occurred"
-                )
+            try {
+                val products = getProducts()
+                _uiState.update { currentState ->
+                    currentState.copy(
+                        products = products,
+                        isLoading = false
+                    )
+                }
+
+            } catch (e: Exception) {
+                _uiState.update { currentState ->
+                    currentState.copy(
+                        isLoading = false,
+                        errorMessage = e.message ?: "An unexpected error occurred"
+                    )
+                }
             }
         }
+
     }
 
     init {
