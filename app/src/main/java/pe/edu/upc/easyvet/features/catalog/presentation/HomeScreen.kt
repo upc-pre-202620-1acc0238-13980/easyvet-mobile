@@ -12,34 +12,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import pe.edu.upc.easyvet.features.catalog.domain.Product
 import pe.edu.upc.easyvet.core.theme.EasyVetTheme
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeViewModel) {
 
-    val products = listOf(
-        Product(
-            id = 1,
-            name = "Dog Food",
-            description = "High-quality dog food for all breeds.",
-            price = 29.99,
-            rating = 4.5,
-            imageUrl = "https://i.imgur.com/WkZEOU6.png"
-        ),
-        Product(
-            id = 2,
-            name = "Cat Food",
-            description = "Nutritious cat food for a healthy life.",
-            price = 19.99,
-            rating = 4.0,
-            imageUrl = "https://i.imgur.com/guSk1sh.png"
-        )
-    )
+    val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
+
 
     LazyColumn(modifier = modifier) {
-        items(products) { product ->
+        items(uiState.products) { product ->
             Card(
                 modifier = Modifier.padding(8.dp)
             ) {
@@ -72,6 +57,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Composable
 fun HomeScreenPreview() {
     EasyVetTheme(dynamicColor = false) {
-        HomeScreen()
+
     }
 }
