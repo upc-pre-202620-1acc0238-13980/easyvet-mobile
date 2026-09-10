@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import pe.edu.upc.easyvet.features.catalog.application.GetProductsUseCase
 
-class HomeViewModel(private val getProducts: GetProductsUseCase): ViewModel() {
+class HomeViewModel(private val getProducts: GetProductsUseCase = GetProductsUseCase()): ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 

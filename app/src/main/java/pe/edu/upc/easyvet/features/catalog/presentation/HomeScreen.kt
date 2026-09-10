@@ -13,12 +13,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
-import pe.edu.upc.easyvet.features.catalog.domain.Product
 import pe.edu.upc.easyvet.core.theme.EasyVetTheme
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeViewModel) {
+fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeViewModel = viewModel()) {
 
     val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
 
@@ -57,6 +57,6 @@ fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeViewModel) {
 @Composable
 fun HomeScreenPreview() {
     EasyVetTheme(dynamicColor = false) {
-
+        HomeScreen()
     }
 }
