@@ -2,6 +2,7 @@ package pe.edu.upc.easyvet.features.catalog.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -33,7 +34,7 @@ fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeViewModel = viewMod
                     AsyncImage(
                         model = product.imageUrl,
                         contentDescription = null,
-                        modifier = Modifier.fillMaxWidth(0.45f)
+                        modifier = Modifier.fillMaxWidth().height(200.dp)
                     )
                     Text(
                         text = product.name,
