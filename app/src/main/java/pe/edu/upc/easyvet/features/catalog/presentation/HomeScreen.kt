@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet
+package pe.edu.upc.easyvet.features.catalog.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,7 +13,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import pe.edu.upc.easyvet.ui.theme.EasyVetTheme
+import pe.edu.upc.easyvet.features.catalog.domain.Product
+import pe.edu.upc.easyvet.core.theme.EasyVetTheme
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {

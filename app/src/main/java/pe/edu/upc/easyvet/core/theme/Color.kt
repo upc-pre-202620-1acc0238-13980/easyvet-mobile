@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.ui.theme
+package pe.edu.upc.easyvet.core.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF1D6754)

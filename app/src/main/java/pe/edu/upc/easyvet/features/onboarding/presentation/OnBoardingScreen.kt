@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet
+package pe.edu.upc.easyvet.features.onboarding.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -21,7 +21,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pe.edu.upc.easyvet.ui.theme.EasyVetTheme
+import pe.edu.upc.easyvet.R
+import pe.edu.upc.easyvet.core.theme.EasyVetTheme
 
 @Composable
 fun OnBoardingScreen() {

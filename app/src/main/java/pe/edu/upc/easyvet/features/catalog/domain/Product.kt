@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet
+package pe.edu.upc.easyvet.features.catalog.domain
 
 data class Product(
     val id: Int,

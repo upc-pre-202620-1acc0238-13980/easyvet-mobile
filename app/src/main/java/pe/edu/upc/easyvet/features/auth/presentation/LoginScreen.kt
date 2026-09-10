@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet
+package pe.edu.upc.easyvet.features.auth.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,9 +20,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import pe.edu.upc.easyvet.ui.theme.EasyVetTheme
-import pe.edu.upc.easyvet.ui.visibility
-import pe.edu.upc.easyvet.ui.visibilityOff
+import pe.edu.upc.easyvet.core.theme.EasyVetTheme
+import pe.edu.upc.easyvet.core.visibility
+import pe.edu.upc.easyvet.core.visibilityOff
 
 @Composable
 fun LoginScreen(modifier: Modifier = Modifier) {

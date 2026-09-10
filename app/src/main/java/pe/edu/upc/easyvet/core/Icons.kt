@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.ui
+package pe.edu.upc.easyvet.core
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
