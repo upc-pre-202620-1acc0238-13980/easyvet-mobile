@@ -1,8 +1,10 @@
 package pe.edu.upc.easyvet.features.catalog.application
 
 import pe.edu.upc.easyvet.features.catalog.domain.ProductRepository
-import pe.edu.upc.easyvet.features.catalog.infrastructure.repositories.ProductRepositoryImpl
+import javax.inject.Inject
 
-class GetProductsUseCase(private val repository: ProductRepository = ProductRepositoryImpl()) {
+class GetProductsUseCase @Inject constructor(
+    private val repository: ProductRepository
+) {
     suspend operator fun invoke() = repository.getProducts()
 }
