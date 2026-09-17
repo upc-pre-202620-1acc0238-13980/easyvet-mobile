@@ -31,4 +31,8 @@ class InMemoryRepository @Inject constructor() : ProductRepository {
         delay(2000.milliseconds)
         return _products
     }
+
+    override suspend fun getProductById(id: Int): Product? {
+        return _products.find { it.id == id }
+    }
 }
