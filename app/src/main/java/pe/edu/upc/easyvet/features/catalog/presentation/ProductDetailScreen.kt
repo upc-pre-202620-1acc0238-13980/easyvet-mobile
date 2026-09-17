@@ -10,15 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 
 @Composable
 fun ProductDetailScreen(
     id: Int,
     modifier: Modifier,
-    viewModel: ProductDetailViewModel = viewModel(),
+    viewModel: ProductDetailViewModel = hiltViewModel(),
     onBack: () -> Unit
 ) {
     val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
