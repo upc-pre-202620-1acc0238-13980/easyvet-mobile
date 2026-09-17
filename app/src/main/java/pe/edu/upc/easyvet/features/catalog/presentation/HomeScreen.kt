@@ -14,9 +14,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import pe.edu.upc.easyvet.core.theme.EasyVetTheme
+import pe.edu.upc.easyvet.features.catalog.domain.Product
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    viewModel: HomeViewModel = hiltViewModel(),
+    onProductClick: (Product) -> Unit
+) {
 
     val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
 
@@ -29,7 +34,9 @@ fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeViewModel = hiltVie
             uiState.products.isNotEmpty() -> {
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(uiState.products) { product ->
-                        ProductCard(product = product)
+                        ProductCard(product = product) {
+                            onProductClick(product)
+                        }
                     }
                 }
             }
@@ -51,6 +58,6 @@ fun HomeScreen(modifier: Modifier = Modifier, viewModel: HomeViewModel = hiltVie
 @Composable
 fun HomeScreenPreview() {
     EasyVetTheme(dynamicColor = false) {
-        HomeScreen()
+        HomeScreen {}
     }
 }

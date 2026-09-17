@@ -33,7 +33,7 @@ class ProductRepositoryImpl @Inject constructor(
 
         if (response.isSuccessful) {
             response.body()?.let { dto ->
-                Product(
+                return Product(
                     id = dto.id,
                     name = dto.title,
                     description = dto.description,
