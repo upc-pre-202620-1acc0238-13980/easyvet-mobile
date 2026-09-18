@@ -27,12 +27,20 @@ class InMemoryRepository @Inject constructor() : ProductRepository {
         )
     )
 
-    override suspend fun getProducts(): List<Product> {
+    override suspend fun getProducts(): Result<List<Product>> {
         delay(2000.milliseconds)
-        return _products
+        return runCatching {
+            _products
+        }
     }
 
-    override suspend fun getProductById(id: Int): Product? {
-        return _products.find { it.id == id }
+    override suspend fun getProductById(id: Int): Result<Product> {
+
+        val product = _products.find { it.id == id }
+        product?.let { product ->
+            return Result.success(product)
+        }
+        return Result.failure(Exception("No product found"))
+
     }
 }

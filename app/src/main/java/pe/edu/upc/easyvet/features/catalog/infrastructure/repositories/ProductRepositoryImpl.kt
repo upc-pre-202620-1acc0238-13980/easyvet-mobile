@@ -8,12 +8,13 @@ import javax.inject.Inject
 class ProductRepositoryImpl @Inject constructor(
     private val service: ProductService
 ) : ProductRepository {
-    override suspend fun getProducts(): List<Product> {
+    override suspend fun getProducts(): Result<List<Product>> {
         val response = service.getProducts()
 
         if (response.isSuccessful) {
+
             response.body()?.let { productsResponseDto ->
-                return productsResponseDto.products.map { dto ->
+                val products = productsResponseDto.products.map { dto ->
                     Product(
                         id = dto.id,
                         name = dto.title,
@@ -23,17 +24,19 @@ class ProductRepositoryImpl @Inject constructor(
                         imageUrl = dto.image
                     )
                 }.toList()
+                return Result.success(products)
             }
+            return Result.failure(Exception("No products found"))
         }
-        return emptyList()
+        return Result.failure(Exception("No response"))
     }
 
-    override suspend fun getProductById(id: Int): Product? {
+    override suspend fun getProductById(id: Int): Result<Product> {
         val response = service.getProductById(id)
 
         if (response.isSuccessful) {
             response.body()?.let { dto ->
-                return Product(
+                val product =   Product(
                     id = dto.id,
                     name = dto.title,
                     description = dto.description,
@@ -41,8 +44,10 @@ class ProductRepositoryImpl @Inject constructor(
                     rating = dto.rating,
                     imageUrl = dto.image
                 )
+                return Result.success(product)
             }
+            return Result.failure(Exception("No products found"))
         }
-        return null
+        return Result.failure(Exception("No response"))
     }
 }
