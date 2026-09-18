@@ -9,26 +9,33 @@ class ProductRepositoryImpl @Inject constructor(
     private val service: ProductService
 ) : ProductRepository {
     override suspend fun getProducts(): Result<List<Product>> {
-        val response = service.getProducts()
 
-        if (response.isSuccessful) {
+        try {
+            val response = service.getProducts()
 
-            response.body()?.let { productsResponseDto ->
-                val products = productsResponseDto.products.map { dto ->
-                    Product(
-                        id = dto.id,
-                        name = dto.title,
-                        description = dto.description,
-                        price = dto.price,
-                        rating = dto.rating,
-                        imageUrl = dto.image
-                    )
-                }.toList()
-                return Result.success(products)
+            if (response.isSuccessful) {
+
+                response.body()?.let { productsResponseDto ->
+                    val products = productsResponseDto.products.map { dto ->
+                        Product(
+                            id = dto.id,
+                            name = dto.title,
+                            description = dto.description,
+                            price = dto.price,
+                            rating = dto.rating,
+                            imageUrl = dto.image
+                        )
+                    }.toList()
+                    return Result.success(products)
+                }
+                return Result.failure(Exception("No products found"))
             }
-            return Result.failure(Exception("No products found"))
+            return Result.failure(Exception("No response"))
         }
-        return Result.failure(Exception("No response"))
+        catch (_: Exception){
+            return Result.failure(Exception("No internet connection"))
+        }
+
     }
 
     override suspend fun getProductById(id: Int): Result<Product> {

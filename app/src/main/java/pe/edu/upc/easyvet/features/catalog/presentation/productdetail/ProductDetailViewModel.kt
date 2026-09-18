@@ -22,13 +22,17 @@ class ProductDetailViewModel @Inject constructor(
         viewModelScope.launch {
 
             try {
-                val product = getProductById(id)
-                product?.let { product ->
-                    _uiState.value = ProductDetailUiState.Success(product = product)
-                } ?: run {
-                    _uiState.value = ProductDetailUiState.Error(message = "Product not found")
+                getProductById(id)
+                    .onSuccess { product ->
+                        _uiState.value = ProductDetailUiState.Success(product = product)
 
-                }
+                    }
+                    .onFailure { e ->
+                        _uiState.value = ProductDetailUiState.Error(
+                            message = e.message ?: "Unknown error"
+                        )
+                    }
+
             } catch (e: Exception) {
                 _uiState.value = ProductDetailUiState.Error(
                     message = e.message ?: "An unexpected error occurred"
