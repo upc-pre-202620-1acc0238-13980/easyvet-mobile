@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.core.theme
+package pe.edu.upc.easyvet.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 

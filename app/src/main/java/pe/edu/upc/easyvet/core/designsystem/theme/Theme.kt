@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.core.theme
+package pe.edu.upc.easyvet.core.designsystem.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

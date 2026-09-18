@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.features.catalog.presentation
+package pe.edu.upc.easyvet.features.catalog.presentation.productdetail
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import pe.edu.upc.easyvet.core.arrowBack
+import pe.edu.upc.easyvet.core.designsystem.icon.arrowBack
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

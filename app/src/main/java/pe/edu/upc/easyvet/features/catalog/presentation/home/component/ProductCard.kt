@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.features.catalog.presentation
+package pe.edu.upc.easyvet.features.catalog.presentation.home.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

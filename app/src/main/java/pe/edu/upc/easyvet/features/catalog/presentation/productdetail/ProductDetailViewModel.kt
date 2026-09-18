@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.features.catalog.presentation
+package pe.edu.upc.easyvet.features.catalog.presentation.productdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

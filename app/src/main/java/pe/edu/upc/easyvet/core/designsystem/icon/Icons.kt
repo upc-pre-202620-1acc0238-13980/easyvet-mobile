@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.core
+package pe.edu.upc.easyvet.core.designsystem.icon
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
@@ -205,7 +205,7 @@ public val arrowBack: ImageVector
                         strokeLineCap = StrokeCap.Butt,
                         strokeLineJoin = StrokeJoin.Bevel,
                         strokeLineMiter = 1f,
-                        pathFillType = PathFillType.Companion.NonZero,
+                        pathFillType = PathFillType.NonZero,
                     ) {
                         moveTo(7.83f, 13f)
                         lineToRelative(5.6f, 5.6f)

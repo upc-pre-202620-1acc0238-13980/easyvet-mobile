@@ -1,10 +1,12 @@
-package pe.edu.upc.easyvet.features.catalog.presentation
+package pe.edu.upc.easyvet.features.catalog.presentation.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
+import pe.edu.upc.easyvet.features.catalog.presentation.home.HomeScreen
+import pe.edu.upc.easyvet.features.catalog.presentation.productdetail.ProductDetailScreen
 
 @Serializable
 object HomeRoute

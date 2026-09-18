@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pe.edu.upc.easyvet.R
-import pe.edu.upc.easyvet.core.theme.EasyVetTheme
+import pe.edu.upc.easyvet.core.designsystem.theme.EasyVetTheme
 
 @Composable
 fun OnBoardingScreen() {

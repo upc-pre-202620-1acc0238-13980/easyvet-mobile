@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.features.catalog.presentation
+package pe.edu.upc.easyvet.features.catalog.presentation.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,8 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import pe.edu.upc.easyvet.core.theme.EasyVetTheme
+import pe.edu.upc.easyvet.core.designsystem.theme.EasyVetTheme
 import pe.edu.upc.easyvet.features.catalog.domain.Product
+import pe.edu.upc.easyvet.features.catalog.presentation.home.component.ProductCard
 
 @Composable
 fun HomeScreen(
