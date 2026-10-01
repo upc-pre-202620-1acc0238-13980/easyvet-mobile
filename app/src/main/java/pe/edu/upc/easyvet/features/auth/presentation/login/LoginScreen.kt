@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.features.auth.presentation
+package pe.edu.upc.easyvet.features.auth.presentation.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
