@@ -15,6 +15,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -30,9 +31,19 @@ import pe.edu.upc.easyvet.core.designsystem.icon.visibility
 import pe.edu.upc.easyvet.core.designsystem.icon.visibilityOff
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginViewModel = hiltViewModel()) {
+fun LoginScreen(
+    modifier: Modifier = Modifier,
+    viewModel: LoginViewModel = hiltViewModel(),
+    onLoginSuccess: () -> Unit
+) {
 
     val state = viewModel.state.collectAsStateWithLifecycle().value
+
+    LaunchedEffect(state.isAuthenticated) {
+        if (state.isAuthenticated) {
+            onLoginSuccess()
+        }
+    }
 
     Box {
         Column(
@@ -106,6 +117,6 @@ fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginViewModel = hiltV
 fun LoginScreenPreview() {
 
     EasyVetTheme(dynamicColor = false) {
-        LoginScreen()
+        LoginScreen {}
     }
 }

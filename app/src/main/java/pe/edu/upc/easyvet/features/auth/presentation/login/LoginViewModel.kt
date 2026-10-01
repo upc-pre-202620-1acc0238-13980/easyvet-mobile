@@ -64,7 +64,9 @@ class LoginViewModel @Inject constructor(private val singIn: LoginUseCase) : Vie
                         _state.update { currentState ->
                             currentState.copy(
                                 isLoading = false,
-                                errorMessage = exception.message
+                                errorMessage = exception.message,
+                                isAuthenticated = false,
+                                user = null
                             )
                         }
                     }
@@ -73,7 +75,9 @@ class LoginViewModel @Inject constructor(private val singIn: LoginUseCase) : Vie
                 _state.update { currentState ->
                     currentState.copy(
                         isLoading = false,
-                        errorMessage = e.message
+                        errorMessage = e.message,
+                        isAuthenticated = false,
+                        user = null
                     )
                 }
             }
