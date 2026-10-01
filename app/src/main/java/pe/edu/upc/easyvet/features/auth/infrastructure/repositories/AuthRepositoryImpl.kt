@@ -3,6 +3,7 @@ package pe.edu.upc.easyvet.features.auth.infrastructure.repositories
 import pe.edu.upc.easyvet.features.auth.domain.AuthRepository
 import pe.edu.upc.easyvet.features.auth.domain.User
 import pe.edu.upc.easyvet.features.auth.infrastructure.remote.AuthService
+import pe.edu.upc.easyvet.features.auth.infrastructure.remote.LoginRequestDto
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(private val service: AuthService) : AuthRepository {
@@ -10,6 +11,23 @@ class AuthRepositoryImpl @Inject constructor(private val service: AuthService) :
         email: String,
         password: String
     ): Result<User> {
-        TODO("Not yet implemented")
+        try {
+            val response = service.login(LoginRequestDto(email, password))
+
+            if (response.isSuccessful) {
+                response.body()?.let { dto ->
+                    val user = User(
+                        firstName = dto.firstName,
+                        lastName = dto.lastName,
+                        email = dto.email
+                    )
+                    return Result.success(value = user)
+                }
+            }
+            return Result.failure(Exception(response.message()))
+
+        } catch (e: Exception) {
+            return Result.failure(e)
+        }
     }
 }
