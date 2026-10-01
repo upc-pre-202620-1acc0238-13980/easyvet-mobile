@@ -19,6 +19,25 @@ class LoginViewModel @Inject constructor(private val singIn: LoginUseCase) : Vie
     private val _state = MutableStateFlow(LoginUiState())
     val state: StateFlow<LoginUiState> = _state.asStateFlow()
 
+
+    fun onEmailChange(email: String) {
+        _state.update { currentState ->
+            currentState.copy(email = email)
+        }
+    }
+
+    fun onPasswordChange(password: String) {
+        _state.update { currentState ->
+            currentState.copy(password = password)
+        }
+    }
+
+    fun togglePasswordVisibility() {
+        _state.update { currentState ->
+            currentState.copy(isPasswordHidden = !currentState.isPasswordHidden)
+        }
+    }
+
     fun login() {
 
         viewModelScope.launch(Dispatchers.IO) {
