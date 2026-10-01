@@ -7,22 +7,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import pe.edu.upc.easyvet.features.auth.presentation.navigation.AuthNavGraphRoute
+import pe.edu.upc.easyvet.features.auth.presentation.navigation.authNavGraph
 import pe.edu.upc.easyvet.features.catalog.presentation.navigation.HomeRoute
 import pe.edu.upc.easyvet.features.catalog.presentation.navigation.catalogNavGraph
 
 @Composable
 fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
 
-    Scaffold(
-        bottomBar = {
-            NavigationBar { }
-        }
-    ) { paddingValues ->
+    Scaffold { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = HomeRoute,
+            startDestination = AuthNavGraphRoute,
             modifier = modifier.padding(paddingValues)
         ) {
+            authNavGraph(navController)
             catalogNavGraph(navController)
         }
     }
