@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import pe.edu.upc.easyvet.features.auth.presentation.navigation.AuthNavGraphRoute
 import pe.edu.upc.easyvet.features.auth.presentation.navigation.authNavGraph
+import pe.edu.upc.easyvet.features.cart.presentation.navigation.cartNavGraph
 import pe.edu.upc.easyvet.features.catalog.presentation.navigation.catalogNavGraph
 
 @Composable
@@ -21,6 +22,7 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
         ) {
             authNavGraph(navController)
             catalogNavGraph(navController)
+            cartNavGraph(navController)
         }
     }
 
